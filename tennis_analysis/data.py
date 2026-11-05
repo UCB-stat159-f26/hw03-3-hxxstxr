@@ -1,3 +1,5 @@
+import json
+import re
 import requests
 
 def _normalize_player_name(player_name):
@@ -29,3 +31,15 @@ def _download_career_js(player_slug):
         )
 
     return response.text
+
+def _parse_career_js(js_text):
+    """Extract match records from Tennis Abstract JavaScript."""
+    match = re.search(
+        r"var\s+morematchmx\s*=\s*(\[[\s\S]*?\]);",
+        js_text,
+    )
+
+    if match is None:
+        raise ValueError("Could not find career match records.")
+
+    return json.loads(match.group(1))
