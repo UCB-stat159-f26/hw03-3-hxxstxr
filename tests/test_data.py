@@ -47,7 +47,7 @@ class TestTennisData(unittest.TestCase):
 
         self.assertEqual(len(df), 1)
         self.assertEqual(df.iloc[0]["result"], "loss")
-        self.assertAlmostEqual(df.iloc[0]["opponent_age"], 18.78, places=2)
+        self.assertAlmostEqual(df.iloc[0]["opponent_age"], 18.78, places = 2)
 
     def test_male_match_dataframe(self):
         match = [""] * 49
