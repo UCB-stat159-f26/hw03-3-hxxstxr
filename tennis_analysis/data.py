@@ -108,3 +108,30 @@ def _build_match_dataframe(matches, player_dob):
         raise ValueError("No matches with valid age information were found.")
 
     return pd.DataFrame(cleaned)
+
+
+def _find_player(player_name):
+    """Find a player's official name and birth date."""
+    name = _normalize_player_name(player_name)
+    base = "https://raw.githubusercontent.com/Aneeshers/tennis-sackmann-archive/main"
+
+    for tour in ("wta", "atp"):
+        url = f"{base}/{tour}/{tour}_players.csv"
+        players = pd.read_csv(url, dtype=str)
+        names = (players["name_first"].fillna("") +
+                 players["name_last"].fillna(""))
+        matches = players[names.str.lower().str.replace(" ", "") == name]
+
+        if len(matches) == 1:
+            player = matches.iloc[0]
+            if pd.notna(player["dob"]):
+                return names.loc[player.name].replace(" ", ""), player["dob"]
+
+    raise ValueError(f"Player '{player_name}' was not found.")
+
+def get_player_matches(player_name):
+    """Retrieve and clean a tennis player's career matches."""
+    player_slug, player_dob = _find_player(player_name)
+    js_text = _download_career_js(player_slug)
+    matches = _parse_career_js(js_text)
+    return _build_match_dataframe(matches, player_dob)
