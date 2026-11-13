@@ -1,0 +1,33 @@
+## AI Usage Documentation
+
+Tool: OpenAI Codex
+Model displayed: GPT-6 Astra
+Reasoning effort: Light
+
+**AI Tool Used:** ChatGPT (OpenAI)
+
+**How I Used AI:**
+
+1. **Understanding the assignment:** 
+
+I used ChatGPT to clarify some of the HW3 requirements, especially the function length restrictions, package structure, and testing expectations.
+
+2. **Code development and debugging:** 
+
+I used ChatGPT for help when I encountered problems while developing the package. This included discussing possible implementations, troubleshooting errors, and reviewing parts of my Python code.
+
+3. **Data processing:** 
+
+I consulted ChatGPT while working through the differences between ATP and WTA career match data, particularly how player ages and opponent ages should be calculated.
+
+4. **Testing:** 
+
+I used ChatGPT to review my unit testing approach and help troubleshoot issues. I also ran the tests locally to check that the functions worked as expected.
+
+
+**Personal Contribution:**
+
+I managed the development of the package, organized the files, worked through the implementation, and tested the final results using Serena Williams and Rafael Nadal. 
+ChatGPT provided explanations, a little bit of code suggestions for parts where I had trouble, and debugging assistance during the process. 
+I reviewed the suggested changes, made adjustments when needed, and verified the final implementation through local testing. 
+I also handled the Git commits and pushes to the course repository.
